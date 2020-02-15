@@ -47,3 +47,11 @@ SELECT e.last_name, COUNT(*) AS frequency
 FROM employees e
 GROUP BY e.last_name
 ORDER BY frequency DESC;
+
+-- BONUS query result...lookup your emp_no.
+SELECT e.emp_no, e.last_name, e.first_name, e.gender, s.salary, d.dept_name
+FROM employees e
+JOIN salaries s ON (e.emp_no = s.emp_no)
+JOIN dept_emp z ON (e.emp_no = z.emp_no)
+JOIN departments d ON (z.dept_no = d.dept_no)
+WHERE e.emp_no = '499942';
